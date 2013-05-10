@@ -14,7 +14,7 @@ class MoversController extends AppController {
  */
 	public function index() {
 		$this->Mover->recursive = 0;
-		$this->set('movers', $this->paginate());
+		$this->set('movers', $this->paginate('Mover', array('Mover.user_id =' => $this->Auth->user('id'))));
 	}
 
 /**
@@ -25,7 +25,7 @@ class MoversController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Mover->exists($id)) {
+		if (!$this->Mover->hasAny( array('Mover.id' => $id, 'Mover.user_id' => $this->Auth->user('id')))) {
 			throw new NotFoundException(__('Invalid mover'));
 		}
 		$options = array('conditions' => array('Mover.' . $this->Mover->primaryKey => $id));
@@ -47,7 +47,8 @@ class MoversController extends AppController {
 				$this->Session->setFlash(__('The mover could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Mover->User->find('list');
+		$options = array('conditions' => array('User.id' => $this->Auth->user('id')));
+		$users = $this->Mover->User->find('list', $options);
 		$this->set(compact('users'));
 	}
 
@@ -59,7 +60,7 @@ class MoversController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Mover->exists($id)) {
+		if (!$this->Mover->hasAny( array('Mover.id' => $id, 'Mover.user_id' => $this->Auth->user('id')))) {
 			throw new NotFoundException(__('Invalid mover'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
@@ -73,7 +74,7 @@ class MoversController extends AppController {
 			$options = array('conditions' => array('Mover.' . $this->Mover->primaryKey => $id));
 			$this->request->data = $this->Mover->find('first', $options);
 		}
-		$users = $this->Mover->User->find('list');
+		$users = $this->Mover->User->find('list', array('conditions' => array('User.id' => $this->Auth->user('id'))));
 		$this->set(compact('users'));
 	}
 
@@ -87,7 +88,7 @@ class MoversController extends AppController {
  */
 	public function delete($id = null) {
 		$this->Mover->id = $id;
-		if (!$this->Mover->exists()) {
+		if (!$this->Mover->hasAny( array('Mover.id' => $id, 'Mover.user_id' => $this->Auth->user('id')))) {
 			throw new NotFoundException(__('Invalid mover'));
 		}
 		$this->request->onlyAllow('post', 'delete');

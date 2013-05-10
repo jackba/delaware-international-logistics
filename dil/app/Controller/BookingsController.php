@@ -6,6 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Booking $Booking
  */
 class BookingsController extends AppController {
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('view');
+	}
 
 /**
  * index method
@@ -14,7 +19,7 @@ class BookingsController extends AppController {
  */
 	public function index() {
 		$this->Booking->recursive = 0;
-		$this->set('bookings', $this->paginate());
+		$this->set('bookings', $this->paginate('Booking', array('Booking.user_id =' => $this->Auth->user('id'))));
 	}
 
 /**
@@ -47,11 +52,14 @@ class BookingsController extends AppController {
 				$this->Session->setFlash(__('The booking could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Booking->User->find('list');
+		$options = array('conditions' => array('User.id' => $this->Auth->user('id')));
+		$users = $this->Booking->User->find('list', $options);
 		$shippers = $this->Booking->Shipper->find('list');
 		$packagers = $this->Booking->Packager->find('list');
 		$movers = $this->Booking->Mover->find('list');
-		$this->set(compact('users', 'shippers', 'packagers', 'movers'));
+		$origin_countries = $this->Booking->Country->find('list');
+		$destination_countries = $this->Booking->Country->find('list');
+		$this->set(compact('users', 'shippers', 'packagers', 'movers', 'origin_countries', 'destination_countries'));
 	}
 
 /**
@@ -80,7 +88,9 @@ class BookingsController extends AppController {
 		$shippers = $this->Booking->Shipper->find('list');
 		$packagers = $this->Booking->Packager->find('list');
 		$movers = $this->Booking->Mover->find('list');
-		$this->set(compact('users', 'shippers', 'packagers', 'movers'));
+		$origin_countries = $this->Booking->Country->find('list');
+		$destination_countries = $this->Booking->Country->find('list');
+		$this->set(compact('users', 'shippers', 'packagers', 'movers', 'origin_countries', 'destination_countries'));
 	}
 
 /**

@@ -17,13 +17,13 @@
 		echo $this->Form->input('origin_city');
 		echo $this->Form->input('origin_state');
 		echo $this->Form->input('origin_zip');
-		echo $this->Form->input('origin_country_id');
+		echo $this->Form->input('origin_country_id', array('options' => $origin_countries));
 		echo $this->Form->input('origin_port');
 		echo $this->Form->input('destination_street');
 		echo $this->Form->input('destination_city');
 		echo $this->Form->input('destination_state');
 		echo $this->Form->input('destination_zip');
-		echo $this->Form->input('destination_country_id');
+		echo $this->Form->input('destination_country_id', array('options' => $destination_countries));
 		echo $this->Form->input('destination_port');
 		echo $this->Form->input('payment_method');
 		echo $this->Form->input('insured');
@@ -37,12 +37,6 @@
 
 		<li><?php echo $this->Html->link(__('List Bookings'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Shippers'), array('controller' => 'shippers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Shipper'), array('controller' => 'shippers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Packagers'), array('controller' => 'packagers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Packager'), array('controller' => 'packagers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Movers'), array('controller' => 'movers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Mover'), array('controller' => 'movers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?></li>
 	</ul>
 </div>

@@ -53,6 +53,20 @@ class Booking extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'origin_country_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'destination_country_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

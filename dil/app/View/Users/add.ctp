@@ -14,12 +14,11 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('email');
-		echo $this->Form->input('country_id');
 		echo $this->Form->input('street');
 		echo $this->Form->input('city');
 		echo $this->Form->input('state');
 		echo $this->Form->input('zipcode');
-		echo $this->Form->input('country');
+		echo $this->Form->input('country_id');
 		echo $this->Form->input('phone');
 	?>
 	</fieldset>
@@ -30,8 +29,10 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
+		<!-- 
 		<li><?php echo $this->Html->link(__('List Countries'), array('controller' => 'countries', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Country'), array('controller' => 'countries', 'action' => 'add')); ?> </li>
+		-->
 		<li><?php echo $this->Html->link(__('List Bookings'), array('controller' => 'bookings', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Booking'), array('controller' => 'bookings', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Movers'), array('controller' => 'movers', 'action' => 'index')); ?> </li>
@@ -40,5 +41,6 @@
 		<li><?php echo $this->Html->link(__('New Packager'), array('controller' => 'packagers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Shippers'), array('controller' => 'shippers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Shipper'), array('controller' => 'shippers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?></li>
 	</ul>
 </div>

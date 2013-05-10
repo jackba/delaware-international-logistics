@@ -13,17 +13,9 @@
 			<th><?php echo $this->Paginator->sort('cargo_qty'); ?></th>
 			<th><?php echo $this->Paginator->sort('cargo_details'); ?></th>
 			<th><?php echo $this->Paginator->sort('container_quantity'); ?></th>
-			<th><?php echo $this->Paginator->sort('origin_street'); ?></th>
-			<th><?php echo $this->Paginator->sort('origin_city'); ?></th>
 			<th><?php echo $this->Paginator->sort('origin_state'); ?></th>
-			<th><?php echo $this->Paginator->sort('origin_zip'); ?></th>
-			<th><?php echo $this->Paginator->sort('origin_country_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('origin_port'); ?></th>
-			<th><?php echo $this->Paginator->sort('destination_street'); ?></th>
-			<th><?php echo $this->Paginator->sort('destination_city'); ?></th>
 			<th><?php echo $this->Paginator->sort('destination_state'); ?></th>
-			<th><?php echo $this->Paginator->sort('destination_zip'); ?></th>
-			<th><?php echo $this->Paginator->sort('destination_country_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('destination_port'); ?></th>
 			<th><?php echo $this->Paginator->sort('payment_method'); ?></th>
 			<th><?php echo $this->Paginator->sort('insured'); ?></th>
@@ -33,7 +25,7 @@
 	<tr>
 		<td><?php echo h($booking['Booking']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($booking['User']['name'], array('controller' => 'users', 'action' => 'view', $booking['User']['id'])); ?>
+			<?php echo $this->Html->link($booking['User']['username'], array('controller' => 'users', 'action' => 'view', $booking['User']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($booking['Shipper']['name'], array('controller' => 'shippers', 'action' => 'view', $booking['Shipper']['id'])); ?>
@@ -50,17 +42,9 @@
 		<td><?php echo h($booking['Booking']['cargo_qty']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['cargo_details']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['container_quantity']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['origin_street']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['origin_city']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['origin_state']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['origin_zip']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['origin_country_id']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['origin_port']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['destination_street']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['destination_city']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['destination_state']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['destination_zip']); ?>&nbsp;</td>
-		<td><?php echo h($booking['Booking']['destination_country_id']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['destination_port']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['payment_method']); ?>&nbsp;</td>
 		<td><?php echo h($booking['Booking']['insured']); ?>&nbsp;</td>
@@ -91,12 +75,6 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Booking'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Shippers'), array('controller' => 'shippers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Shipper'), array('controller' => 'shippers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Packagers'), array('controller' => 'packagers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Packager'), array('controller' => 'packagers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Movers'), array('controller' => 'movers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Mover'), array('controller' => 'movers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?></li>
 	</ul>
 </div>
