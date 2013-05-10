@@ -1,19 +1,9 @@
 <div class="users view">
 <h2><?php  echo __('User'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Username'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Question1'); ?></dt>
@@ -61,11 +51,6 @@
 			<?php echo h($user['User']['email']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Country'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($user['Country']['name'], array('controller' => 'countries', 'action' => 'view', $user['Country']['id'])); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Street'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['street']); ?>
@@ -88,7 +73,7 @@
 		</dd>
 		<dt><?php echo __('Country'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['country']); ?>
+			<?php echo $this->Html->link($user['Country']['name'], array('controller' => 'countries', 'action' => 'view', $user['Country']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Phone'); ?></dt>
@@ -104,17 +89,11 @@
 		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Countries'), array('controller' => 'countries', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Country'), array('controller' => 'countries', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Bookings'), array('controller' => 'bookings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Booking'), array('controller' => 'bookings', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Movers'), array('controller' => 'movers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Mover'), array('controller' => 'movers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Packagers'), array('controller' => 'packagers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Packager'), array('controller' => 'packagers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Shippers'), array('controller' => 'shippers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Shipper'), array('controller' => 'shippers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?></li>
 	</ul>
 </div>
 <div class="related">

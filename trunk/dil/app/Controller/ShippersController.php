@@ -14,7 +14,7 @@ class ShippersController extends AppController {
  */
 	public function index() {
 		$this->Shipper->recursive = 0;
-		$this->set('shippers', $this->paginate());
+		$this->set('shippers', $this->paginate('Shipper', array('Shipper.user_id =' => $this->Auth->user('id'))));
 	}
 
 /**

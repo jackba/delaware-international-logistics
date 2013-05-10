@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($booking['User']['name'], array('controller' => 'users', 'action' => 'view', $booking['User']['id'])); ?>
+			<?php echo $this->Html->link($booking['User']['username'], array('controller' => 'users', 'action' => 'view', $booking['User']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Shipper'); ?></dt>
@@ -106,9 +106,9 @@
 			<?php echo h($booking['Booking']['destination_zip']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Destination Country Id'); ?></dt>
+		<dt><?php echo __('Destination Country'); ?></dt>
 		<dd>
-			<?php echo h($booking['Booking']['destination_country_id']); ?>
+			<?php echo $this->Html->link($booking['Country']['name'], array('controller' => 'countries', 'action' => 'view', $booking['Country']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Destination Port'); ?></dt>
@@ -134,14 +134,7 @@
 		<li><?php echo $this->Html->link(__('Edit Booking'), array('action' => 'edit', $booking['Booking']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Booking'), array('action' => 'delete', $booking['Booking']['id']), null, __('Are you sure you want to delete # %s?', $booking['Booking']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Bookings'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Booking'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Shippers'), array('controller' => 'shippers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Shipper'), array('controller' => 'shippers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Packagers'), array('controller' => 'packagers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Packager'), array('controller' => 'packagers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Movers'), array('controller' => 'movers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Mover'), array('controller' => 'movers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?></li>
 	</ul>
 </div>

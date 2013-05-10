@@ -14,7 +14,7 @@ class PackagersController extends AppController {
  */
 	public function index() {
 		$this->Packager->recursive = 0;
-		$this->set('packagers', $this->paginate());
+		$this->set('packagers', $this->paginate('Packager', array('Packager.user_id =' => $this->Auth->user('id'))));
 	}
 
 /**
@@ -47,7 +47,8 @@ class PackagersController extends AppController {
 				$this->Session->setFlash(__('The packager could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Packager->User->find('list');
+		$options = array('conditions' => array('User.id' => $this->Auth->user('id')));
+		$users = $this->Packager->User->find('list', $options);
 		$this->set(compact('users'));
 	}
 
